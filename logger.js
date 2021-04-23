@@ -47,7 +47,7 @@ class Logger {
     fatal(...args) {
         args.push("\x1b[0m")
         console.log("\x1b[41m", ...args)
-        this.exit_error()
+        this.exitError()
     }
 
     exitSuccess() {

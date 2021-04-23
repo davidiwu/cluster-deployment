@@ -1,5 +1,6 @@
 const _shell = require('shelljs');
 const path = require('path');
+const logger = require('./logger');
 
 module.exports = class Chart {
     constructor(options = {}) {
@@ -12,6 +13,7 @@ module.exports = class Chart {
         this.isHelm3 = true;
         this.namespaceArg = this.namespace ? ` --namespace ${this.namespace}` : '';
         this.getArg = this.isHelm3 ? ' hooks' : '';
+        this.checkHelmVersion();
     }
 
     helmCmds() {
@@ -36,5 +38,13 @@ module.exports = class Chart {
         } else {
             return false;
         }
+    }
+
+    checkHelmVersion() {
+        const helmVersion = /v(\d+)\.\d+\.\d+/.exec(_shell.exec('helm version --client').stdout || '')
+        if(helmVersion && helmVersion[1] == '2') {
+            this.isHelm3 = false;
+        }
+        logger.note(`Using helm version ${this.isHelm3 ? '>v2' : 'v2'}`);
     }
 }

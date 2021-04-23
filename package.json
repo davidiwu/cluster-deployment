@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/davidiwu/cluster-deployment#readme",
   "dependencies": {
+    "argio": "0.0.3",
     "shelljs": "^0.8.4"
   },
-  "tmpDir" : "cluster-deployment"
+  "tmpDir": "cluster-deployment"
 }

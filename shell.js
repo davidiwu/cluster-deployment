@@ -36,5 +36,14 @@ module.exports = {
         }
 
         return ctx;
+    },
+
+    checkDeps(deps) {
+        logger.note(`Checking dependencies...`);
+        deps.forEach(dep => {
+            if(!_shell.which(dep)) {
+                logger.fatal(`Dependency ${dep} was not installed!`)
+            }
+        })
     }
 }
