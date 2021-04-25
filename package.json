@@ -1,6 +1,6 @@
 {
   "name": "cluster-deployment",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a npm package used to deploy applications from git to kubernetes cluster",
   "main": "index.js",
   "scripts": {
@@ -29,5 +29,6 @@
     "argio": "0.0.3",
     "shelljs": "^0.8.4"
   },
-  "tmpDir": "cluster-deployment"
+  "tmpDir": "cluster-deployment",
+  "projFile": "package.json"
 }

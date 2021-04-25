@@ -11,9 +11,9 @@ module.exports = class Chart {
         this.purgeFirst = options.purge;
         this.debugArg = options.debug ? ' hooks' : '';
         this.isHelm3 = true;
+        this.checkHelmVersion();
         this.namespaceArg = this.namespace ? ` --namespace ${this.namespace}` : '';
         this.getArg = this.isHelm3 ? ' hooks' : '';
-        this.checkHelmVersion();
     }
 
     helmCmds() {

@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-const printMsg = require('./index').printMsg;
-
-const [,, ...args] = process.argv;
+const DeployFlow = require('./index');
 
 (function() {
-    printMsg(args);
+    const df = new DeployFlow();
+    df.run();
 })()
