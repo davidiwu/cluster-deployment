@@ -28,13 +28,13 @@ class DeployFlow {
     checkVersion() {
         if (args.get('version')) {
             logger.info(pkg.version)
-            logger.exit_success()
+            logger.exitSuccess()
           }
     }
 
     printHelp() {
         if (args.get('help') || args.params.attributes.includes('h')) {
-            logger.info('Usage: git-to-k8s repo_url [--dry] [-b branch] [-n namespace] [--purge] [--debug] [--local] [--image-only] [--chart-only]')
+            logger.info('Usage: k8s-deploy repo_url [--dry] [-b branch] [-n namespace] [--purge] [--debug] [--local] [--image-only] [--chart-only]')
             logger.info('Options:')
             logger.info('    -b branch: specify the git branch for a remote repository')
             logger.info('    -n namespace: specify the target namespace for deployment(When specified,')
@@ -46,7 +46,7 @@ class DeployFlow {
             logger.info('    --chart-only: only deploy charts without touching images')
             logger.info('    --dry: dry run only and shows commands to execute, with images will be built')
             logger.info('    --debug: show debug info from helm')
-            logger.exit_success()
+            logger.exitSuccess()
           } 
     }
 
