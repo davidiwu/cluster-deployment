@@ -174,6 +174,7 @@ class DeployFlow {
         this.printHelp();
 
         shell.checkDeps(deps);
+        this.getRepoInfo();
         this.prepareCmds();
 
         if(this.dry) {
