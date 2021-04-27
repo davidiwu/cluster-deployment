@@ -143,6 +143,15 @@ class DeployFlow {
         }));
     }
 
+    prepareCleanup() {
+        const removeCmds = [`rm -rf ${path.join(pkg.tmpDir, this.repoName)}`];
+        this.steps.push(new Step({
+            name: 'Clean up',
+            cmds: removeCmds,
+            dryCmds: removeCmds
+        }));
+    }
+
     prepareCmds() {
         // step 1: copy git repo
         this.prepareGitCmds();
@@ -152,6 +161,14 @@ class DeployFlow {
 
         // step 3: deploy helm charts
         this.prepareHelmCmds();
+
+        // step 4: clean up
+        this.prepareCleanup();
+    }
+
+    printSummary() {
+        logger.iinfo(`Deploy this git repo: ${this.repoUrl}`);
+        logger.info(`Total ${this.steps.length} steps to run.`);
     }
     
     runSteps() {
@@ -177,6 +194,7 @@ class DeployFlow {
         this.getRepoInfo();
         this.prepareCmds();
 
+        this.printSummary();
         if(this.dry) {
             this.dryRunSteps();
         } else {
