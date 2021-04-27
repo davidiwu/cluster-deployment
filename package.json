@@ -1,6 +1,6 @@
 {
   "name": "cluster-deployment",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a npm package used to deploy applications from git to kubernetes cluster",
   "main": "index.js",
   "scripts": {
